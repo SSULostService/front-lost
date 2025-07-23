@@ -5,7 +5,8 @@ import Header from './Header';
 import Nav from "./Nav";
 import MainContent from "./MainContent";
 import Footer from "./Footer";
-import Write from "./Write"; // 글쓰기 컴포넌트
+import Write from "./Write";
+import WriteForm from "./WriteForm";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<MainContent />} />
                     <Route path="/write" element={<Write />} />
+                    <Route path="/write/new" element={<WriteForm />} /> {/* ✅ 추가된 경로 */}
                 </Routes>
                 <Nav />
                 <Footer />
