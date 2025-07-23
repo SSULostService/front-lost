@@ -1,0 +1,60 @@
+.writeform-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.writeform-container h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-align: center;
+    color: #333;
+}
+
+.writeform-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.writeform-form label {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.writeform-form input,
+.writeform-form textarea,
+.writeform-form select {
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.writeform-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.writeform-form button {
+    align-self: flex-end;
+    padding: 12px 28px;
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.writeform-form button:hover {
+    background-color: #388e3c;
+}
