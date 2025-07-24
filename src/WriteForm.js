@@ -25,8 +25,15 @@ function WriteForm({ onSubmit }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        //필수 필드 검증
+        if (!title.trim() || !content.trim() || !category || !place.trim() || !date) {
+            alert('모든 필드를 입력해주세요.');
+            return;
+        }
+
         const newPost = {
-            id: Date.now().toString(),
+            id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
             title,
             content,
             category,

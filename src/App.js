@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Header from './Header';
@@ -10,7 +10,14 @@ import WriteForm from "./WriteForm";
 import WriteDetail from './WriteDetail';
 
 function App() {
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState(() =>{
+        const saved = localStorage.getItem('posts');
+        return saved ? JSON.parse(saved) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('posts', JSON.stringify(posts));
+    }, [posts]);
 
     const handleAddPost = (newPost) => {
         setPosts([newPost, ...posts]);

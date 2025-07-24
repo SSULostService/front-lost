@@ -6,7 +6,7 @@ function WriteDetail({ posts }) {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const post = posts.find(p => p.id === id);
+    const post = posts.find(p => p.id.toString() === id);
 
     if (!post) {
         return <div style={{ padding: '2rem' }}>❌ 게시글을 찾을 수 없습니다.</div>;
@@ -23,7 +23,12 @@ function WriteDetail({ posts }) {
             <div className="detail-item"><strong>날짜:</strong> {post.date}</div>
             {post.imageUrl && (
                 <div className="detail-image">
-                    <img src={post.imageUrl} alt="첨부 이미지" />
+                    <img
+                        src={post.imageUrl}
+                        alt="첨부 이미지"
+                        onError={(e) => {e.target.style.display = 'none';
+                        }}
+                    />
                 </div>
             )}
         </div>

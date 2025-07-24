@@ -2,7 +2,7 @@ import React from 'react';
 import './Write.css';
 import { useNavigate } from 'react-router-dom';
 
-function Write({ posts }) {
+function Write({ posts = [] }) {
     const navigate = useNavigate();
 
     return (
@@ -39,5 +39,4 @@ function Write({ posts }) {
         </div>
     );
 }
-
 export default Write;
