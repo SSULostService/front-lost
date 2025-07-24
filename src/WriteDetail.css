@@ -1,0 +1,25 @@
+.write-detail-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.detail-item {
+    margin: 1rem 0;
+}
+
+.detail-image img {
+    max-width: 100%;
+    margin-top: 1rem;
+}
+
+.back-button {
+    margin-bottom: 1rem;
+    background-color: #eee;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+}
