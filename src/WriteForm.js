@@ -26,7 +26,7 @@ function WriteForm({ onSubmit }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //필수 필드 검증
+        // 필수 필드 검증
         if (!title.trim() || !content.trim() || !category || !place.trim() || !date) {
             alert('모든 필드를 입력해주세요.');
             return;
@@ -41,9 +41,10 @@ function WriteForm({ onSubmit }) {
             date,
             imageUrl: image || '',
         };
+
         onSubmit(newPost);
         alert('제출되었습니다!');
-        navigate('/'); 
+        navigate('/');
     };
 
     return (
@@ -74,7 +75,12 @@ function WriteForm({ onSubmit }) {
                 </div>
                 <div>
                     <label>보관 장소</label>
-                    <input type="text" value={place} onChange={(e) => setPlace(e.target.value)} placeholder="예: 베어드홀, 도서관 등" />
+                    <input
+                        type="text"
+                        value={place}
+                        onChange={(e) => setPlace(e.target.value)}
+                        placeholder="예: 베어드홀, 도서관 등"
+                    />
                 </div>
                 <div>
                     <label>날짜</label>

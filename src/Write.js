@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom';
 function Write({ posts = [] }) {
     const navigate = useNavigate();
 
+    const handleClick = () => {
+        navigate('/write/new'); // 글 작성 페이지로 이동
+    };
+
     return (
         <div className="write-page">
             <div className="main-content-wrapper">
@@ -35,8 +39,10 @@ function Write({ posts = [] }) {
                     ))}
                     </tbody>
                 </table>
+                <button className="write-button" onClick={handleClick}>✏️ 글 작성</button>
             </div>
         </div>
     );
 }
+
 export default Write;

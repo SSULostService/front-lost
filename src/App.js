@@ -10,7 +10,7 @@ import WriteForm from "./WriteForm";
 import WriteDetail from './WriteDetail';
 
 function App() {
-    const [posts, setPosts] = useState(() =>{
+    const [posts, setPosts] = useState(() => {
         const saved = localStorage.getItem('posts');
         return saved ? JSON.parse(saved) : [];
     });

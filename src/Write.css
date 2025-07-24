@@ -1,4 +1,3 @@
-
 .post-table {
     width: 100%;
     border-collapse: collapse;
@@ -21,5 +20,10 @@
 .post-table tr:hover {
     background-color: #f9f9f9;
 }
+
+.write-button:hover {
+    background-color: #388e3c;
+}
+
 
 
