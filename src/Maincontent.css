@@ -69,14 +69,16 @@
 }
 
 .main-write-button {
-    margin-top: 20px;
-    padding: 12px 20px;
+    align-self: flex-end;
+    padding: 12px 28px;
     background-color: #4caf50;
     color: white;
+    font-weight: bold;
+    font-size: 16px;
     border: none;
     border-radius: 6px;
-    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .main-write-button:hover {

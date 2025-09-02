@@ -20,10 +20,10 @@ function Nav(){
                     </a>
                 </li>
                 <li>
-                    <a href="#image" className="nav-item">
+                    <Link to="/image" className="nav-item">
                         <MdPhotoLibrary size="24" />
                         <span>사진</span>
-                    </a>
+                    </Link>
                 </li>
                 <li>
                     <Link to="/write" className="nav-item">

@@ -3,9 +3,9 @@ import posts from './data/posts';
 import './Maincontent.css';
 import { useNavigate } from "react-router-dom";
 
-function MainContent() {
+function MainContent({posts}) {
     const navigate = useNavigate();
-    const recentPosts = posts.slice(0, 4);
+    const recentPosts = posts ? posts.slice(0, 4) : [];
 
     return (
         <main className="site-main-content">
@@ -19,8 +19,10 @@ function MainContent() {
                     <h2>최근 올라온 게시물</h2>
                     <div className="recent-posts-grid">
                         {recentPosts.map(post => (
-                            <div key={post.id} className="recent-post-item">
-                                <img src={post.imageUrl} alt={post.title} className="recent-post-image" />
+                            <div key={post.id} className="recent-post-item" onClick={()=> navigate('/image')}>
+                                {post.imageUrl && (
+                                    <img src={post.imageUrl} alt={post.title} className="recent-post-image" />
+                                )}
                             </div>
                         ))}
                     </div>
