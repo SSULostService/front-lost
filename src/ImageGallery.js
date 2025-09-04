@@ -21,7 +21,7 @@ function ImageGallery({ posts }) {
                     </div>
                 ))}
             </div>
-            <button onClick={() => navigate('/write/new')}>글 작성</button>
+            <button className="write-button" onClick={() => navigate('/write/new')}>글 작성</button>
         </div>
     );
 }
