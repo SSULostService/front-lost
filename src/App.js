@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import Write from "./Write";
 import WriteForm from "./WriteForm";
 import WriteDetail from './WriteDetail';
+import ImageGallery from './ImageGallery';
 
 function App() {
     const [posts, setPosts] = useState(() => {
@@ -28,10 +29,11 @@ function App() {
             <div className="App-layout-container">
                 <Header />
                 <Routes>
-                    <Route path="/" element={<MainContent />} />
+                    <Route path="/" element={<MainContent posts={posts}/>} />
                     <Route path="/write" element={<Write posts={posts} />} />
                     <Route path="/write/new" element={<WriteForm onSubmit={handleAddPost} />} />
                     <Route path="/write/:id" element={<WriteDetail posts={posts} />} />
+                    <Route path="/image" element={<ImageGallery posts={posts}/>}/>
                 </Routes>
                 <Nav />
                 <Footer />
