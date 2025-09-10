@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import './Write.css';
 import { useNavigate } from 'react-router-dom';
 
 function Write({ posts = [] }) {
     const navigate = useNavigate();
+    const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'desc' });
+    const sortedPosts = useMemo(() => {
+        let sortablePosts = [...posts];
+        if (sortConfig.key) {
+            sortablePosts.sort((a, b) => {
+                const aValue = a[sortConfig.key];
+                const bValue = b[sortConfig.key];
+
+                if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
+                if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+        return sortablePosts;
+    }, [posts, sortConfig]);
+
+    const handleSort = (key) => {
+        setSortConfig((prev) => {
+            if (prev.key === key) {
+                return { key, direction: prev.direction === 'asc' ? 'desc' : 'asc' };
+            }
+            return { key, direction: 'asc' };
+        });
+    };
 
     const handleClick = () => {
-        navigate('/write/new'); // 글 작성 페이지로 이동
+        navigate('/write/new');
     };
 
     return (
@@ -16,28 +40,25 @@ function Write({ posts = [] }) {
                 <table className="post-table">
                     <thead>
                     <tr>
-                        <th>접수번호</th>
-                        <th>분류</th>
-                        <th>제목</th>
-                        <th>보관장소</th>
-                        <th>날짜</th>
+                        <th onClick={() => handleSort('id')}>접수번호 {sortConfig.key === 'id' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+                        <th onClick={() => handleSort('category')}>분류 {sortConfig.key === 'category' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+                        <th onClick={() => handleSort('title')}>제목 {sortConfig.key === 'title' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+                        <th onClick={() => handleSort('place')}>보관장소 {sortConfig.key === 'place' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
+                        <th onClick={() => handleSort('date')}>날짜 {sortConfig.key === 'date' ? (sortConfig.direction === 'asc' ? '▲' : '▼') : ''}</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {posts.map(post => (
-                        <tr
-                            key={post.id}
-                            onClick={() => navigate(`/write/${post.id}`)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <td>{post.id}</td>
-                            <td>{post.category}</td>
-                            <td>{post.title}</td>
-                            <td>{post.place}</td>
-                            <td>{post.date}</td>
+                    {sortedPosts.map(post => (
+                        <tr key={post.id} onClick={() => navigate(`/write/${post.id}`)} style={{ cursor: 'pointer' }}>
+                            <td>{post.id}</td>        {/* 접수번호 */}
+                            <td>{post.category}</td>  {/* 분류 */}
+                            <td>{post.title}</td>     {/* 제목 */}
+                            <td>{post.place}</td>     {/* 보관장소 */}
+                            <td>{post.date}</td>      {/* 날짜 */}
                         </tr>
                     ))}
                     </tbody>
+
                 </table>
                 <button className="write-button" onClick={handleClick}>✏️ 글 작성</button>
             </div>

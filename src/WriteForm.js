@@ -68,9 +68,13 @@ function WriteForm({ onSubmit }) {
                     <label>분류</label>
                     <select value={category} onChange={(e) => setCategory(e.target.value)}>
                         <option value="">선택하세요</option>
-                        <option value="휴대폰">휴대폰</option>
+                        <option value="가방">가방</option>
+                        <option value="의류">의류</option>
+                        <option value="전자기기">전자기기</option>
                         <option value="액세서리">액세서리</option>
+                        <option value="도서">도서</option>
                         <option value="지갑">지갑</option>
+                        <option value="기타">기타</option>
                     </select>
                 </div>
                 <div>
